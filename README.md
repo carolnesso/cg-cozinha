@@ -2,6 +2,8 @@
 
 ## Trabalho de computação gráfica sobre a modelagem de uma cozinha.
 
+## Trabalho realizado pela dupla [Ana Carolina Nesso Guedes](https://github.com/carolnesso) e [Rayssa Rosseno](https://github.com/RayssaRoseno)
+
 Para compilar, por padrão com o uso de 4 threads, utilize o comando `make build`.
 Utilize `make compile` para compilar com um único thread.
 Para compilar o arquivos e logo após executar o binário, utilize o comando `make run`.
