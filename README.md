@@ -1,6 +1,6 @@
-# Modelo de quarto em computação gráfica
+# Modelo de Cozinha em computação gráfica
 
-## Trabalho de computação gráfica sobre a modelagem de um quarto.
+## Trabalho de computação gráfica sobre a modelagem de uma cozinha.
 
 Para compilar, por padrão com o uso de 4 threads, utilize o comando `make build`.
 Utilize `make compile` para compilar com um único thread.
@@ -13,26 +13,25 @@ Os controles de movimento são com as teclas `wasd`, e o mouse.
 
 Para movimentação vertical, utilize `barra de espaço` para ir para cima e `b` para ir para baixo.
 
-Para abrir e fechar as portas e a janela, pressione a tecla `p` para abrir, `o` para fechar, para trocar entre os objetos que podem abrir ou fechar, utilize a tecla `l`.
-    No total são 3 objetos que podem ser abertos/fechados, sendo eles duas portas e uma janela.
+Para abrir e fechar a portas, pressione a tecla `p` para abrir, `o` para fechar, e para abrir e fechar as janelas, pressione `l` para abrir e `m` para fechar.
+    No total são 3 objetos que podem ser abertos/fechados, sendo eles duas janelas e uma porta.
 
 Para ligar ou desligar a luminária, utilize a tecla `k`.
 
 ## Requisitos da AB1
 
- - [x] Poder navegar pelo quarto utilizando o mouse e teclado
- - [x] A modelagem e apresentação do quarto, cama, mesa, ventilador e quadro
- - [x] Além de mais 5 objetos à sua escolha
- - [x] Uma porta deverá poder abrir e fechar com o teclado
- - [x] Uma janela deverá abrir e fechar como teclado
+ - [:heavy_check_mark:] Poder navegar pela cozinha utilizando o mouse e teclado
+ - [:heavy_check_mark:] Além de mais 5 objetos à sua escolha
+ - [:heavy_check_mark:] Uma porta deverá poder abrir e fechar com o teclado
+ - [:heavy_check_mark:] Uma janela deverá abrir e fechar como teclado
 
 ## Requisitos da AB2
 
- - [x] Modelar e apresentar um quadro de Vincent Van Gogh
- - [x] Ventilador de mesa com hélice girando no sentido horário em velocidade baixa
- - [x] Luminária spot em cima da mesa
- - [x] Iluminação especular e difusa na modelagem
- - [x] Aplicar mapeamento de textura em 5 objetos
+ - [:heavy_check_mark:] Modelar e apresentar um quadro com mapeamento de textura
+ - [:heavy_check_mark:] Ventilador de teto com hélice girando no sentido horário em velocidade baixa
+ - [:heavy_check_mark:] Luminária spot em cima da mesa
+ - [:heavy_check_mark:] Iluminação especular e difusa na modelagem
+ - [:heavy_check_mark:] Aplicar mapeamento de textura em, pelo menos, 5 objetos
 
 ## Referências:
 

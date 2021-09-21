@@ -11,6 +11,7 @@ static camera cam {
 };
 
 float door_rotate = 90.0;
+float window_rotate = 90.0;
 float last_frame = 0, dt = 0;
 float speed = 9.6f;
 
@@ -24,7 +25,7 @@ static void idle()
     dt = current_frame - last_frame;
     last_frame = current_frame;
 
-    float rotation_speed = 360.0f * 2.0f;
+    float rotation_speed = 60.0f * 2.0f;
     rot_angle += rotation_speed * dt;
     // basically it caps the angle to 360.0f
     rot_angle -= 360.0f * (rot_angle >= 360.0f);
@@ -53,81 +54,92 @@ static void display()
 
     mat1.apply_material();
 
-    glPushMatrix();
+    glPushMatrix();//cozinha
         glTranslatef(0.0f, -5.0f, 0.0f);
         glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
         glScalef(5.0f, 5.0f, 5.0f);
         models["base cozinha"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//janela01
         glTranslatef(-5.5f, -4.0f, 33.90f);
-        glRotatef(90.0f, 0.0f, -5.0f, 0.0f);
+        glRotatef(window_rotate, 0.0f, -1.0f, 0.0f);
         glScalef(4.0f, 6.0f, 4.0f);
         models["janela"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//janela02_nao se move
         glTranslatef(5.5f, -4.0f, 33.90f);
-        glRotatef(90.0f, 0.0f, -5.0f, 0.0f);
+        glRotatef(90.0f, 0.0f, -1.0f, 0.0f);
         glScalef(4.0f, 6.0f, 4.0f);
         models["janela"].draw_mat_mesh();
     glPopMatrix(); 
 
-    glPushMatrix();
+    glPushMatrix();//janela03
         glTranslatef(15.5f, -4.0f, 33.90f);
-        glRotatef(90.0f, 0.0f, -5.0f, 0.0f);
+        glRotatef(window_rotate, 0.0f, -1.0f, 0.0f);
         glScalef(4.0f, 6.0f, 4.0f);
         models["janela"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//cadeira
         glTranslatef(-13.0f, -4.7f, 2.5f);
         glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
         glScalef(4.5f, 4.9f, 4.9f);
         models["cadeira"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
-        glTranslatef(0.0f, -2.0f, 0.0f);
-        glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
-        glScalef(5.0f, 5.0f, 5.0f);
+    glPushMatrix();//pia
+        glTranslatef(5.5f, -4.7f, 22.0f);
+        glRotatef(180.0f, 0.0f, -1.0f, 0.0f);
+        glScalef(4.0f, 4.0f, 4.0f);
         models["pia"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//mesa
         glTranslatef(0.0f, -4.7f, 0.0f);
         glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
         glScalef(4.5f, 4.5f, 4.5f);
         models["mesa de jantar"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//cadeira
         glTranslatef(15.0f, -4.7f, -2.5f);
         glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
         glScalef(4.5f, 4.9f, 4.9f);
         models["cadeira"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//porta
         glTranslatef(25.0f, -5.0f, -7.0f);
         glRotatef(door_rotate, 0.0f, -1.0f, 0.0f);
         glScalef(7.0f, 6.95f, 2.0f);
         models["porta cozinha"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//luminaria
         glTranslatef(0.0f, 4.2f, 0.0f);
         glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
         glScalef(3.0f, 3.0f, 3.0f);
         models["luminaria de mesa"].draw_mat_mesh();
     glPopMatrix();
 
-    glPushMatrix();
+    glPushMatrix();//quadro
         glTranslatef(0.0f, -5.0f, -20.0f);
         glRotatef(90.0f, 0.0f, -5.0f, 0.0f);
         glScalef(5.0f, 5.0f, 5.0f);
         models["quadro"].draw_mat_mesh();
+    glPopMatrix();
+
+    glPushMatrix(); // ventilador
+        glTranslatef(0.0f, 19.85f, 1.5f);
+        glRotatef(0.0f, 0.0f, 0.0f, 0.0f);
+        glScalef(0.5f, 0.5f, 0.5f);
+        models["ventiladorc"].draw_mat_mesh();
+        glTranslatef(0.0f, -0.9f, 0.45f);
+        glRotatef(rot_angle, 0.0f, 1.0f, 0.0f);
+        glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+        models["ventiladorh"].draw_mat_mesh();
     glPopMatrix();
 
     glutSwapBuffers();
@@ -179,7 +191,10 @@ void keyboard(unsigned char key, int x, int y)
             door_rotate = 0.0;
         break;
         case 'l':
-            control_index = (control_index + 1) % 3;
+            window_rotate = 0.0;
+        break;
+        case 'm':
+            window_rotate = 90.0;
         break;
         case 'r':
             static GLenum mode = GL_LINE;
@@ -219,7 +234,7 @@ void mouse(int button, int state, int x, int y)
 
 int main(int argc, char **argv)
 {
-    mwindow.init(argc, argv, "CG Cozinha AB2", 700, 700);
+    mwindow.init(argc, argv, "CG Cozinha AB2", 1080, 900);
 
     glEnable(GL_DEPTH_TEST);
     /* lightning  */
@@ -239,8 +254,8 @@ int main(int argc, char **argv)
 
     light[1] = clight(
         1,
-        {0.584521f, -0.794203f, -0.166065f, 1.0f}, // position
-        {0.913373f, -0.084374f, -0.398285f, 1.0f},   // direction
+        {2.337596f, -20.059727f, 3.531517f, 1.0f}, // position
+        {-0.409779f, 21.274517f, 1.932557f, 1.0f},   // direction
         {1.2f, 1.2f, 1.2f, 1.0f},   // ambient
         {2.0f, 2.2f, 2.0f, 2.0f},   // diffuse
         {1.5f, 1.5f, 1.5f, 1.0f},   // specular
@@ -262,15 +277,16 @@ int main(int argc, char **argv)
 
     cam.center_camera_angle(mwindow);
    
-    models["base cozinha"] = obj_file("objs/baseCozinha.obj");
+    models["base cozinha"] = obj_file("objs/baseCozinhateste.obj");
     models["cadeira"] = obj_file("objs/cadeira.obj");
     models["janela"] = obj_file("objs/janela.obj");
     models["mesa de jantar"] = obj_file("objs/mesadejantar.obj");
-    models["pia"] = obj_file("objs/pia.obj");
+    models["pia"] = obj_file("objs/piateste.obj");
     models["porta cozinha"] = obj_file("objs/portacozinha.obj");
-    models["luminaria de mesa"] = obj_file("objs/luminaria.obj");
+    models["luminaria de mesa"] = obj_file("objs/luminariademesa.obj");
     models["quadro"] = obj_file("objs/quadro.obj");
-    models["ventilador de teto"] = obj_file("objs/ventiladordeteto.obj");
+    models["ventiladorc"] = obj_file("objs/ventilador_corpo.obj");
+    models["ventiladorh"] = obj_file("objs/ventilador_helice.obj");
     mwindow.run();
     return 0;
 }
